@@ -6,7 +6,9 @@ import api from './api'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+    origin: ['https://git.heroku.com/apitaketest.git', ' https://apitaketest.herokuapp.com/']
+}))
 
 app.use(express.json())
 
