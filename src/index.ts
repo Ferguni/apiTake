@@ -50,7 +50,6 @@ app.get('/name/:name', async (req, res) => {
 
 
 app.get('/description/:description', async (req, res) => {
-  const param = req.params
 
   const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
 
