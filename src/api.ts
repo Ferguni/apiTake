@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: ' https://git.heroku.com/apitaketest.git'
+  baseURL: ' https://apitaketest.herokuapp.com'
 }) 
 
 export default api
