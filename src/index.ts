@@ -6,7 +6,13 @@ import api from './api'
 
 const app = express()
 
-app.use(cors())
+const allowedOrigins = ['https://git.heroku.com/apitaketest.git'];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins
+};
+
+app.use(cors(options))
 
 app.use(express.json())
 
