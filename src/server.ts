@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 app.get('/', async (req, res) => {
-  res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
+  res.send("Welcome to a simple Github API")
 })
 
 
