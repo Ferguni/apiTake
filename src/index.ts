@@ -20,16 +20,16 @@ app.use(express.json())
 app.get('/', async (req, res) => {
 
   
-  console.log(res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`))
+  res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
 
 })
 
 
 
-app.get('/:img', async (req, res) => {
+app.get('img/:img', async (req, res) => {
 
   
-  console.log(res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`))
+  res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`)
   //Just redirect  the avatar_url because is the same for all repositories
 
 })
@@ -50,7 +50,7 @@ app.get('/name/:name', async (req, res) => {
 
   
   
-  console.log(res.json(formatJson))
+  res.json(formatJson)
 })
 
 
@@ -69,7 +69,7 @@ app.get('/description/:description', async (req, res) => {
   }
   
   
-  console.log(res.json(formatJson))
+ res.json(formatJson)
 })
 
 
