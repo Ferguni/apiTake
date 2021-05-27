@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_1 = __importDefault(require("./api"));
+const PORT = process.env.PORT || 3333;
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
@@ -59,3 +60,7 @@ app.get('/description/:description', (req, res) => __awaiter(void 0, void 0, voi
 }));
 const port = process.env.PORT || 3333;
 app.listen(port, () => console.log(`Server at port:${port}`));
+// Initialize server
+app.listen(PORT, () => {
+    console.warn(`Server listening on port: ${PORT}`);
+});
