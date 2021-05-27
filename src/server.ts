@@ -18,15 +18,13 @@ app.get('/', async (req, res) => {
 
 app.get('/img/:img', async (req, res) => {
 
-  try {
+
     
     const { img } = req.params
 
   res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
   //Just redirect  the avatar_url because is the same for all repositories
-  } catch (error) {
-    console.error(error.message)
-  }
+
 
 });
 
