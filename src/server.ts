@@ -15,43 +15,69 @@ app.get('/', async (req, res) => {
   res.send("Welcome to a simple Github API")
 })
 
-app.get('/:repo', async (req, res) => {
+
+app.get('/img/:img', async (req, res) => {
+
   try {
-    const { repo } = req.params
-
-    // const { title, author } = req.query
-  
-    /** 
-     * O @title que eu tiro do req.query é os parâmetros que vem depois
-     * do "?", então caso você queira pegar mais informações é só ir adicionando
-     * nos query params e você pode colocar quantos quiser
-     * 
-     * http://localhost:3333/fireheet?title=blambers
-     * 
-     * Por exemplo se você quiser pegar tipo, o nome do autor e titulo iria ficar
-     * 
-     * http://localhost:3333/fireheet?title=blambers&author=robison
-     * 
-     * O "&" separa os parâmetros, e ai pra pegar pra usar no código é só colocar
-     * o nome do parâmetro q você espera, ali junto na declaração do title, que ai
-     * ficaria do jeito que ta comentado embaixo
-    */
-
-    const response = await api.get(`/orgs/${repo}/repos`)
-  
-    if (!response) {
-      throw new Error('Repository not found')
-    }
-  
-    const { owner } = response.data[0]
     
-    res.json(owner.url)
-  }
-  catch (error) {
+    const { img } = req.params
+
+  res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
+  //Just redirect  the avatar_url because is the same for all repositories
+  } catch (error) {
     console.error(error.message)
   }
-  
+
 });
+
+app.get('/name/:name', async (req, res) => {
+
+  
+ try {
+  const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
+
+  const { name } = response.data[req.params.name]
+
+
+
+
+  const formatJson = {
+    name
+  }
+
+  
+
+  res.json(formatJson);
+ } catch (error) {
+  console.error(error.message)
+
+ }
+});
+
+
+
+app.get('/description/:description', async (req, res) => {
+  
+
+  try {
+    const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
+
+  const { description } = response.data[req.params.description]
+
+
+
+
+  const formatJson = {
+    description
+  }
+  
+  
+  res.json(formatJson);
+  } catch (error) {
+    console.error(error.message)
+
+  }
+})
 
 
 // Initialize server
