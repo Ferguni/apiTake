@@ -15,95 +15,47 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_1 = __importDefault(require("./api"));
-const PORT = 3333;
 const app = express_1.default();
-
 app.use(cors_1.default());
 app.use(express_1.default.json());
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("Welcome to a simple Github API");
+    res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
 }));
-
-app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
-
-  
-    res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
-  
-  }),
-  
-  
-  
-  app.get('/img/:img', async (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-  
+app.get('/img/:img', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-      
-      const { img } = req.params
-  
-    res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`)
-    //Just redirect  the avatar_url because is the same for all repositories
-    } catch (error) {
-      console.error(error.message);
+        const { img } = req.params;
+        res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
+        //Just redirect  the avatar_url because is the same for all repositories
     }
-  
-  }),
-  
-  app.get('/name/:name', async (req, res) =>__awaiter(void 0, void 0, void 0, function* () {
-  
-    const { name } = req.params
-
-   try {
-    const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
-  
-    const { name } = response.data[req.params.name]
-  
-  
-  
-  
-    const formatJson = {
-      name
+    catch (error) {
+        console.error(error.message);
     }
-  
-    
-  
-    res.json(formatJson);
-   } catch (error) {
-    console.error(error.message);
-  
-   }
-
-  })),
-  
-  
-  
-  app.get('/description/:description', async (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    
-  
+}));
+app.get('/name/:name', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-      const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
-  
-    const { description } = response.data[req.params.description]
-  
-  
-  
-  
-    const formatJson = {
-      description
+        const response = yield api_1.default.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
+        const { name } = response.data[req.params.name];
+        const formatJson = {
+            name
+        };
+        res.json(formatJson);
     }
-    
-    
-    res.json(formatJson);
-    } catch (error) {
-      console.error(error.message);
-  
+    catch (error) {
+        console.error(error.message);
     }
-  }),
-  
-
-
-
-
-
-// Initialize server
-app.listen(PORT, () => {
-    console.warn(`Server listening on port: ${PORT}`);
-});
+}));
+app.get('/description/:description', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield api_1.default.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
+        const { description } = response.data[req.params.description];
+        const formatJson = {
+            description
+        };
+        res.json(formatJson);
+    }
+    catch (error) {
+        console.error(error.message);
+    }
+}));
+const port = process.env.PORT || 3333;
+app.listen(port, () => console.log(`Server at port:${port}`));
