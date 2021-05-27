@@ -20,10 +20,12 @@ const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send("Welcome to api-edson: Ordering desc. 5 C# from takenet ! ");
+}));
+app.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
 }));
-app.post('/img/:img', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { img } = req.params;
+app.get('/img', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
     //Just redirect  the avatar_url because is the same for all repositories
 }));
