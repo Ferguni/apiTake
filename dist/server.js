@@ -33,7 +33,7 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
   
   
   
-  app.get('/img/:img', async (req, res) => {
+  app.get('/img/:img', async (req, res) => __awaiter(void 0, void 0, void 0, function* () {
   
     try {
       
@@ -47,7 +47,7 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
   
   }),
   
-  app.get('/name/:name', async (req, res) => {
+  app.get('/name/:name', async (req, res) =>__awaiter(void 0, void 0, void 0, function* () {
   
     
    try {
@@ -74,7 +74,7 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
   
   
   
-  app.get('/description/:description', async (req, res) => {
+  app.get('/description/:description', async (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     
   
     try {
