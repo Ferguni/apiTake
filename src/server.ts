@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
 })
 
 
-app.put('/img/:img', async (req, res) => {
+app.post('/img/:img', async (req, res) => {
 
 
     
