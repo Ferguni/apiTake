@@ -20,33 +20,34 @@ const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("Welcome to a simple Github API");
+    res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
 }));
-app.get('/:repo', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('/img/:img', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { img } = req.params;
+    res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
+    //Just redirect  the avatar_url because is the same for all repositories
+}));
+app.get('/name/:name', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { repo } = req.params;
-        // const { title, author } = req.query
-        /**
-         * O @title que eu tiro do req.query é os parâmetros que vem depois
-         * do "?", então caso você queira pegar mais informações é só ir adicionando
-         * nos query params e você pode colocar quantos quiser
-         *
-         * http://localhost:3333/fireheet?title=blambers
-         *
-         * Por exemplo se você quiser pegar tipo, o nome do autor e titulo iria ficar
-         *
-         * http://localhost:3333/fireheet?title=blambers&author=robison
-         *
-         * O "&" separa os parâmetros, e ai pra pegar pra usar no código é só colocar
-         * o nome do parâmetro q você espera, ali junto na declaração do title, que ai
-         * ficaria do jeito que ta comentado embaixo
-        */
-        const response = yield api_1.default.get(`/orgs/${repo}/repos`);
-        if (!response) {
-            throw new Error('Repository not found');
-        }
-        const { owner } = response.data[0];
-        res.json(owner.url);
+        const response = yield api_1.default.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
+        const { name } = response.data[req.params.name];
+        const formatJson = {
+            name
+        };
+        res.json(formatJson);
+    }
+    catch (error) {
+        console.error(error.message);
+    }
+}));
+app.get('/description/:description', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield api_1.default.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`);
+        const { description } = response.data[req.params.description];
+        const formatJson = {
+            description
+        };
+        res.json(formatJson);
     }
     catch (error) {
         console.error(error.message);
