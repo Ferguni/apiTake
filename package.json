@@ -2,7 +2,7 @@
   "name": "takeapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "build": "tsc -p .",
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
