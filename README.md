@@ -7,7 +7,7 @@ my api: http://api-edson-com.umbler.net/
 Basically, the routes this API are:
 
 * **/** -> Home
-* 
+
 * **/img** -> How all repositories in GitHub have the same avatar_url for each account, just redirect without parameters
 
 * **/name/:name** -> Just are acetable parametrers that range is <0 to 4>, in order decrescent of updting C# repositories
