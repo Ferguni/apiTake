@@ -6,13 +6,7 @@ import api from './api'
 
 const app = express()
 
-const allowedOrigins = ['https://git.heroku.com/apitaketest.git'];
-
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
-};
-
-app.use(cors(options))
+app.use(cors())
 
 app.use(express.json())
 
@@ -26,7 +20,7 @@ app.get('/', async (req, res) => {
 
 
 
-app.get('img/:img', async (req, res) => {
+app.get('/:img', async (req, res) => {
 
   
   res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`)
@@ -56,6 +50,7 @@ app.get('/name/:name', async (req, res) => {
 
 
 app.get('/description/:description', async (req, res) => {
+  const param = req.params
 
   const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
 
@@ -69,10 +64,10 @@ app.get('/description/:description', async (req, res) => {
   }
   
   
- res.json(formatJson)
+  res.json(formatJson)
 })
 
 
-app.listen(process.env.PORT || 8080, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Server at port:${port}`));
