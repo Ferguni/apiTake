@@ -80,11 +80,6 @@ app.get('/description/:description', async (req, res) => {
 })
 
 
-const port = process.env.PORT || 3333;
-
-app.listen(port, () => console.log(`Server at port:${port}`));
-
-
 // Initialize server
 app.listen(PORT, () => {
   console.warn(`Server listening on port: ${PORT}`)
