@@ -20,7 +20,7 @@ app.get('/', async (req, res) => {
 
 
 
-app.get('/:img', async (req, res) => {
+app.get('/img/:img', async (req, res) => {
 
   
   res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`)
@@ -44,7 +44,7 @@ app.get('/name/:name', async (req, res) => {
 
   
 
-  res.json(formatJson)
+  res.json(formatJson).json
 })
 
 
@@ -64,10 +64,10 @@ app.get('/description/:description', async (req, res) => {
   }
   
   
-  res.json(formatJson)
+  res.json(formatJson).json
 })
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3333;
 
 app.listen(port, () => console.log(`Server at port:${port}`));

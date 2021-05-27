@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
-    "start": " node index.ts",
-    "build": "tsc src/index.ts"
+    "start": " node index.ts"
   },
   "author": "",
   "license": "ISC",
