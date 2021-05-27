@@ -12,7 +12,10 @@ app.use(express.json());
 
 
 app.get('/', async (req, res) => {
-  res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`);
+
+  
+  res.redirect(`https://api.github.com/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
+
 })
 
 
