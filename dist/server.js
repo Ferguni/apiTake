@@ -42,14 +42,15 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
     res.redirect(`https://avatars.githubusercontent.com/u/4369522?v=4`)
     //Just redirect  the avatar_url because is the same for all repositories
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
   
   }),
   
   app.get('/name/:name', async (req, res) =>__awaiter(void 0, void 0, void 0, function* () {
   
-    
+    const { name } = req.params
+
    try {
     const response = await api.get(`/orgs/takenet/repos?per_page=5&page=1+language:C#&sort=stars&order=desc`)
   
@@ -66,11 +67,11 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
   
     res.json(formatJson);
    } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   
    }
 
-  }),
+  })),
   
   
   
@@ -92,7 +93,7 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
     
     res.json(formatJson);
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
   
     }
   }),
@@ -105,4 +106,4 @@ app.get('/', async (req, res) => __awaiter(void 0, void 0, void 0, function* (){
 // Initialize server
 app.listen(PORT, () => {
     console.warn(`Server listening on port: ${PORT}`);
-}))
+});

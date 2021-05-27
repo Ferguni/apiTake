@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "build": "tsc -p .",
-    "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+    "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "node dist/server.js"
   },
   "author": "",
